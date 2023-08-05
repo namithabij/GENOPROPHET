@@ -132,6 +132,16 @@ component_count = list(range(1, len(cumulative_variance) + 1))
 target_variance = 0.95
 num_components_95var = next(i for i, variance in enumerate(cumulative_variance) if variance >= target_variance) + 1
 
+# Plotting the Explained Variance
+plt.figure(figsize=(10, 5))
+plt.plot(component_count, variance_explained)
+plt.xlabel('Principal Component')
+plt.ylabel('Explained Variance')
+plt.title('Explained Variance per Principal Component')
+plt.grid(True)
+plt.show()
+
+
 # Plotting the PCA curve
 plt.plot(component_count, cumulative_variance, marker='o')
 plt.axvline(num_components_95var, color='r', linestyle='--', label=f'{num_components_95var} components for 95% variance')
